@@ -20,7 +20,7 @@ jobs:
         cache: maven
      
     - name: Set up Chrome
-      uses: docker://selenium/standalone-chrome
+      uses: actions/setup-chrome@latest
 
     - name: Build with Maven
       run: |
