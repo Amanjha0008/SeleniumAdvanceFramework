@@ -19,18 +19,15 @@ jobs:
         distribution: 'temurin'
         cache: maven
      
-    - uses: actions/setup-chrome@latest
-    - run: google-chrome --version
+    - name: Set up Chrome
+      uses: docker://selenium/standalone-chrome
+
     - name: Build with Maven
       run: |
        mvn -B clean test
        
     - name: Upload Test Reports
-
       uses: actions/upload-artifact@v3
-
       with:
-
         name: test-reports
-
         path: target/surefire-reports
